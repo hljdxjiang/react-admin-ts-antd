@@ -217,32 +217,9 @@ export const isAuthorized = (val: string): boolean => {
   return !!permissions.find((_) => _.code === val)
 }
 
-const checkRoute = (val: String, menu: Menu[]) => {
-  var ret = false;
-  ret = !!menu.find((item) =>
-    item.menu_path === val)
-  if (!ret) {
-    menu.map((item) => {
-      if (item.children !== undefined && item.children.length > 0) {
-        ret = checkRoute(val, item.children)
-        if (ret === true) {
-          return true
-        }
-      }
-    })
-  }
-  return ret;
-}
-
-export const hasRouter = (val: String): boolean => {
+export const isRouter = (val: String): boolean => {
   const menus = getMenus();
-  var ret = false;
-  menus.map((item) => {
-    if (ret === false) {
-      ret = checkRoute(val, menus)
-    }
-  })
-  return ret;
+  return !!menus.find((_) => _.key === val)
 }
 
 /**

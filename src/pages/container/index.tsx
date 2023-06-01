@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import MenuView from '@/components/common/menu'
 import classNames from 'classnames'
 import { Layout, BackTop } from 'antd'
-import { getKeyName, isAuthorized } from '@/assets/js/publicFunc'
+import { getKeyName, isRouter } from '@/assets/js/publicFunc'
 import Header from '@/components/common/header'
 import TabPanes from '@/components/common/tabPanes'
 import { selectUserInfo } from '@/store/slicers/userSlice'
@@ -24,7 +24,7 @@ const checkAuth = (newPathname: string): boolean => {
     return true
   }
   const { tabKey: currentKey } = getKeyName(newPathname)
-  return isAuthorized(currentKey)
+  return isRouter(currentKey)
 }
 
 interface PanesItemProps {

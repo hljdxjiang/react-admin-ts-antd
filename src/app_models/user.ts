@@ -5,11 +5,12 @@ export interface Permission {
 }
 
 export interface Menu {
-  menu_id: String
-  menu_path: String
-  menus_title: String
-  menu_type?: String
-  children: Menu[]
+  menu_id?: String
+  path?: String
+  desc?: String
+  type?: String
+  key?: String
+  children?: Menu[]
 }
 
 export interface UserInfo {

@@ -35,6 +35,9 @@ const LoginForm: FC = () => {
       const { username, password } = values
       try {
         const result = await session.login({ username, password })
+        result.permission.forEach(element => {
+          result.menus = [...result.menus, { key: element.code, desc: element.name }]
+        });
         dispatch(setUserInfo(result))
         history.push('/')
       } catch (e) {
@@ -49,6 +52,9 @@ const LoginForm: FC = () => {
     }
     // 线上环境直接返回信息
     const result = userRes[0]
+    result.permission.forEach(element => {
+      result.menus = [...result.menus, { key: element.code, desc: element.name }]
+    });
     dispatch(setUserInfo(result))
     history.push('/')
   }
