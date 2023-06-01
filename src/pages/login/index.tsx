@@ -35,6 +35,7 @@ const LoginForm: FC = () => {
       const { username, password } = values
       try {
         const result = await session.login({ username, password })
+        //TODO 以下代码为测试代码，需要从登录接口返回用户具有的所有菜单及权限
         result.permission.forEach(element => {
           result.menus = [...result.menus, { key: element.code, desc: element.name }]
         });
@@ -52,6 +53,7 @@ const LoginForm: FC = () => {
     }
     // 线上环境直接返回信息
     const result = userRes[0]
+    //TODO 以下代码为测试代码，需要从登录接口返回用户具有的所有菜单及权限
     result.permission.forEach(element => {
       result.menus = [...result.menus, { key: element.code, desc: element.name }]
     });

@@ -117,7 +117,7 @@ const preDefinedRoutes: MenuRoute[] = [
     exact: true,
     key: '/403',
     icon: InfoCircleOutlined,
-    // hideInMenu: true,
+    hideInMenu: true,
     component: ErrorPage
   }
 ]
