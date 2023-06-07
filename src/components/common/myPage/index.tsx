@@ -101,6 +101,16 @@ const MyPage: FC<PageProps> = (
       console.log(selectKeys)
     }
 
+    const beforeOk = () => {
+      var row = selectRow
+      columns.forEach(e => {
+        if (e["editType"] === "edit") {
+          row[e["dataIndex"]] = selectRow[e["dataIndex"]].toHTML();
+        }
+      });
+      return row;
+    }
+
     const onChange = (e, stype?, sid?) => {
       var newRow = onItemChange(selectRow, e, stype, sid);
       setSelectRow(newRow)
@@ -108,15 +118,15 @@ const MyPage: FC<PageProps> = (
 
     // 新增按钮
     const AddBtn = () => (
-      <Button className="fr" style={{ padding: '0 5px 0 0' }} onClick={add} type="primary">
+      <Button className="fr" onClick={add} type="primary">
         新增
       </Button>
     )
 
     // 新增按钮
     const BatchDelBtn = () => (
-      <Button className="fr" style={{ padding: '0 5px 0 0' }} onClick={delBatch} type="primary">
-        新增
+      <Button className="fr" style={{ marginRight: "10px" }} onClick={delBatch} type="primary">
+        删除
       </Button>
     )
 
@@ -126,10 +136,11 @@ const MyPage: FC<PageProps> = (
     }
 
     const handleOk = () => {
-      if (selectRow["id"] === undefined) {
-        addApiFun(selectRow)
+      var row = beforeOk();
+      if (row["id"] === undefined) {
+        addApiFun(row)
       } else {
-        editApiFun(selectRow)
+        editApiFun(row)
       }
       setSelectRow({});
       setCanEdit(false)

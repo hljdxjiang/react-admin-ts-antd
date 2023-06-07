@@ -4,7 +4,7 @@ import MySelect from '@/components/common/mySelect'
 import commom from '@/api'
 import MyPage from '@/components/common/myPage';
 
-const UserList: FC = () => {
+const NewUserList: FC = () => {
   // 搜索栏配置项
   const searchConfigList = [
     {
@@ -79,10 +79,11 @@ const UserList: FC = () => {
         addApiFun={commom.getList}
         editApiFun={commom.getList}
         delApiFun={commom.getList}
-        showOpeation={false}
+        showOpeation={true}
+        showBatchDelBtn={true}
         searchConfigList={searchConfigList}
       />
     </>
   )
 }
-export default UserList
+export default NewUserList

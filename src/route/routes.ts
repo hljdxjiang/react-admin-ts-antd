@@ -21,6 +21,7 @@ import { MenuRoute } from '@/route/types'
 // import React from 'react'
 // import { Icon } from '@iconify/react'
 import { TestApiLoad } from './TempTestRouteComponent'
+import NewUserList from '@/pages/user/newList'
 
 /**
  * path 跳转的路径
@@ -59,7 +60,7 @@ const preDefinedRoutes: MenuRoute[] = [
         name: '用户列表',
         exact: true,
         key: 'user:list:view',
-        component: UserList
+        component: NewUserList
       },
       {
         path: '/user/list/add',

@@ -56,6 +56,8 @@ const UserList: FC = () => {
   }
 
   const handleOk = () => {
+    var row = selectRow;
+    row["edit"] = selectRow["edit"].toHTML();
     setSelectRow({});
     setCanEdit(false)
     setOpen(false)
@@ -133,7 +135,7 @@ const UserList: FC = () => {
     },
     {
       title: 'edit',
-      dataIndex: 'edit',
+      dataIndex: 'email',
       editType: "edit",
       span: 6,
       sorter: true,
